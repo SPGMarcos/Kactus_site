@@ -12,6 +12,32 @@ import { ProductCard } from '@/components/product-card';
 export const dynamic = 'force-dynamic';
 export default async function Home() {
   const { products } = await catalog({ featured: 'true' });
+  const looks = [
+    {
+      image: '/look-white-black.png',
+      label: 'MONOCROMIA',
+      title: 'O clássico ganha outra atitude.',
+      alt: 'Camiseta branca, calça preta e tênis brancos em composição masculina.',
+    },
+    {
+      image: '/look-red-denim.png',
+      label: 'COR COM PRESENÇA',
+      title: 'Detalhes que não passam despercebidos.',
+      alt: 'Camiseta vermelha e bermuda jeans em composição masculina.',
+    },
+    {
+      image: '/look-polo-navy.png',
+      label: 'LINHA ESSENCIAL',
+      title: 'Leveza para acompanhar o seu ritmo.',
+      alt: 'Polo branca e calça azul-marinho em composição masculina.',
+    },
+    {
+      image: '/look-balmain-black.png',
+      label: 'NOITE & TEXTURA',
+      title: 'Um visual que fala antes de você.',
+      alt: 'Camiseta branca estampada e bermuda preta em composição masculina.',
+    },
+  ];
   return (
     <>
       <section className="hero">
@@ -47,9 +73,14 @@ export default async function Home() {
         <div
           className="hero-visual"
           role="img"
-          aria-label="Referência da Kactus: camiseta masculina de malha clara"
+          aria-label="Look Kactus com camiseta branca e calça preta"
         >
-          <div className="editorial-photo photo-knit" />
+          <img
+            className="hero-look"
+            src="/look-white-black.png"
+            alt="Camiseta branca, calça preta e tênis brancos em composição masculina"
+          />
+          <div className="hero-shade" />
           <span className="visual-label">O ESSENCIAL NUNCA É COMUM.</span>
           <div className="visual-caption">
             <span>
@@ -62,7 +93,7 @@ export default async function Home() {
             </Link>
           </div>
           <span className="photo-credit">
-            Imagem da referência da marca · catálogo em preparação
+            Look de inspiração Kactus · catálogo em preparação
           </span>
         </div>
       </section>
@@ -90,31 +121,15 @@ export default async function Home() {
             Explorar a loja <ArrowRight size={18} />
           </Link>
         </div>
-        <div className="editorial-grid">
-          {[
-            {
-              name: 'O básico que marca.',
-              subtitle: 'CAMISETAS & ESSENCIAIS',
-              photo: 'photo-white',
-            },
-            {
-              name: 'Presença em cada detalhe.',
-              subtitle: 'POLOS & TEXTURAS',
-              photo: 'photo-knit',
-            },
-            {
-              name: 'Seu próximo favorito.',
-              subtitle: 'COMPOSIÇÕES & ESTILO',
-              photo: 'photo-red',
-            },
-          ].map((item, i) => (
-            <Link href="/loja" className="editorial-card" key={item.name}>
-              <div className={`editorial-photo ${item.photo}`} />
-              <span className="editorial-number">0{i + 1}</span>
-              <div>
-                <p>{item.subtitle}</p>
-                <h3>{item.name}</h3>
-                <ArrowUpRight />
+        <div className="lookbook-grid">
+          {looks.map((look, i) => (
+            <Link href="/loja" className="look-card" key={look.image}>
+              <img src={look.image} alt={look.alt} />
+              <span className="look-number">0{i + 1}</span>
+              <div className="look-card-copy">
+                <p>{look.label}</p>
+                <h3>{look.title}</h3>
+                <ArrowUpRight aria-hidden="true" />
               </div>
             </Link>
           ))}
