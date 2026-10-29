@@ -1,0 +1,43 @@
+-- Integration assertions. Disposable fixtures, all rolled back.
+begin;
+insert into auth.users(id) values('10000000-0000-4000-8000-000000000001'),('10000000-0000-4000-8000-000000000002'),('10000000-0000-4000-8000-000000000003');
+insert into public.user_roles values('10000000-0000-4000-8000-000000000003','admin');
+insert into public.products(id,name,slug,price,status) values('20000000-0000-4000-8000-000000000001','TESTE TRANSACIONAL — NÃO COMERCIAL','fixture-transacional',10000,'active');
+insert into public.variants(id,product_id,sku,size,color,stock,cost) values('30000000-0000-4000-8000-000000000001','20000000-0000-4000-8000-000000000001','FIXTURE-ONLY','M','Preto',1,4000);
+do $$ declare a uuid;b uuid;failed boolean:=false;begin
+ a:=public.reserve_order('10000000-0000-4000-8000-000000000001','40000000-0000-4000-8000-000000000001','[{"variant_id":"30000000-0000-4000-8000-000000000001","quantity":1}]');
+ b:=public.reserve_order('10000000-0000-4000-8000-000000000001','40000000-0000-4000-8000-000000000001','[{"variant_id":"30000000-0000-4000-8000-000000000001","quantity":1}]');
+ if a<>b or (select reserved from public.variants where sku='FIXTURE-ONLY')<>1 then raise exception 'FAIL idempotency';end if;
+ begin perform public.reserve_order('10000000-0000-4000-8000-000000000002','40000000-0000-4000-8000-000000000002','[{"variant_id":"30000000-0000-4000-8000-000000000001","quantity":1}]');exception when others then failed:=true;end;
+ if not failed then raise exception 'FAIL overselling';end if;
+ failed:=false;begin perform public.adjust_stock('10000000-0000-4000-8000-000000000003','30000000-0000-4000-8000-000000000001',-1,'Ajuste teste');exception when others then failed:=true;end;
+ if not failed then raise exception 'FAIL reserved adjustment';end if;
+ failed:=false;begin perform public.settle_order(a,'cs_test_fixture','paid',1,'brl','pi_fixture','evt_bad','test');exception when others then failed:=true;end;
+ if not failed or exists(select 1 from public.stripe_events where id='evt_bad') then raise exception 'FAIL amount or failed event committed';end if;
+ perform public.settle_order(a,'cs_test_fixture','paid',10000,'brl','pi_fixture','evt_paid','test');
+ perform public.settle_order(a,'cs_test_fixture','paid',10000,'brl','pi_fixture','evt_paid','test');
+ perform public.settle_order(a,'cs_test_fixture','expired',10000,'brl','pi_fixture','evt_late','test');
+ if (select stock from public.variants where sku='FIXTURE-ONLY')<>0 or (select reserved from public.variants where sku='FIXTURE-ONLY')<>0 or (select payment_status from public.orders where id=a)<>'paid' or (select count(*) from public.stock_movements where order_id=a)<>1 then raise exception 'FAIL duplicate/out of order';end if;
+ update public.products set price=20000,status='archived' where id='20000000-0000-4000-8000-000000000001';
+ update public.variants set cost=5000 where sku='FIXTURE-ONLY';
+ if (select unit_price from public.order_items where order_id=a)<>10000 or (select cost from public.order_items where order_id=a)<>4000 then raise exception 'FAIL history';end if;
+ perform public.adjust_stock('10000000-0000-4000-8000-000000000003','30000000-0000-4000-8000-000000000001',1,'Entrada de teste');
+ update public.products set status='active' where id='20000000-0000-4000-8000-000000000001';
+ b:=public.reserve_order('10000000-0000-4000-8000-000000000002','40000000-0000-4000-8000-000000000003','[{"variant_id":"30000000-0000-4000-8000-000000000001","quantity":1}]');
+ perform public.settle_order(b,'cs_expire_fixture','expired',20000,'brl',null,'evt_expired','test');
+ perform public.settle_order(b,'cs_expire_fixture','expired',20000,'brl',null,'evt_expired2','test');
+ if (select stock from public.variants where sku='FIXTURE-ONLY')<>1 or (select reserved from public.variants where sku='FIXTURE-ONLY')<>0 then raise exception 'FAIL expiration';end if;
+end $$;
+set local role authenticated;
+select set_config('request.jwt.claim.sub','10000000-0000-4000-8000-000000000001',true);
+do $$begin
+ if (select count(*) from public.orders)<>1 then raise exception 'FAIL owner RLS';end if;
+ if exists(select 1 from public.orders where user_id<>'10000000-0000-4000-8000-000000000001') then raise exception 'FAIL customer isolation';end if;
+ if has_table_privilege('authenticated','public.user_roles','INSERT') or has_table_privilege('authenticated','public.user_roles','UPDATE') then raise exception 'FAIL privilege escalation';end if;
+ if has_function_privilege('authenticated','public.reserve_order(uuid,uuid,jsonb)','EXECUTE') or has_function_privilege('authenticated','public.admin_mutate(uuid,text,uuid,jsonb,text)','EXECUTE') then raise exception 'FAIL server RPC permissions';end if;
+ if has_column_privilege('authenticated','public.variants','cost','SELECT') or has_column_privilege('authenticated','public.order_items','cost','SELECT') then raise exception 'FAIL cost disclosure';end if;
+ if private.is_admin() then raise exception 'FAIL customer admin role';end if;
+end $$;
+reset role;
+rollback;
+select 'PASS: idempotency, stock protection, reserved adjustment, amount validation, failed event retry, duplicates, out-of-order, snapshots, expiry, RLS isolation, role protection, RPC restrictions, cost privacy' as result;
