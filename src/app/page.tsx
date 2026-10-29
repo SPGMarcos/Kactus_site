@@ -158,7 +158,7 @@ export default async function Home() {
           catálogo.
         </p>
       </section>
-      <section className="section arrivals">
+      <section id="novidades" className="section arrivals">
         <div className="section-heading">
           <div>
             <p className="eyebrow">UMA NOVA FORMA DE SE EXPRESSAR</p>

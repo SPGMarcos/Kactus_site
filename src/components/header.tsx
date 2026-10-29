@@ -32,8 +32,7 @@ export function Header() {
           <Link className={path === '/loja' ? 'active' : ''} href="/loja">
             Loja
           </Link>
-          <Link href="/loja?sort=new">Novidades</Link>
-          <Link href="/#essencia">Nossa essência</Link>
+          <Link href="/#novidades">Novidades</Link>
         </nav>
         <div className="header-actions">
           <Link href="/loja#busca" aria-label="Buscar produtos">
@@ -73,6 +72,7 @@ export function Header() {
                 {[
                   ['/', 'Início'],
                   ['/loja', 'Loja'],
+                  ['/#novidades', 'Novidades'],
                   ['/conta', 'Minha conta'],
                   ['/carrinho', 'Carrinho'],
                 ].map(([href, label]) => (
