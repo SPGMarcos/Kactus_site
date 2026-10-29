@@ -10,6 +10,25 @@ import {
 import { catalog } from '@/lib/catalog';
 import { ProductCard } from '@/components/product-card';
 export const dynamic = 'force-dynamic';
+
+function InstagramIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      aria-hidden="true"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.4" cy="6.6" r="0.8" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export default async function Home() {
   const { products } = await catalog({ featured: 'true' });
   const looks = [
@@ -213,15 +232,19 @@ export default async function Home() {
         </div>
       </section>
       <section className="instagram-banner">
-        <span className="eyebrow">O ESTILO CONTINUA POR LÁ</span>
+        <div className="instagram-banner-icon" aria-hidden="true">
+          <InstagramIcon size={26} />
+        </div>
+        <span className="eyebrow">ACOMPANHE A KACTUS</span>
+        <h2>Inspiração para vestir<br />a sua presença.</h2>
+        <p>Novos looks, detalhes e novidades em primeira mão.</p>
         <a
           href="https://www.instagram.com/kactus_stylish_01/"
           target="_blank"
           rel="noreferrer"
         >
-          @kactus_stylish_01 <ArrowUpRight />
+          <InstagramIcon size={17} /> Seguir @kactus_stylish_01 <ArrowUpRight size={17} />
         </a>
-        <p>Inspirações, detalhes e novidades da Kactus.</p>
       </section>
     </>
   );

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ArrowUpRight, Camera as Instagram } from 'lucide-react';
 import { settings } from '@/lib/catalog';
 export async function Footer() {
   const s = await settings();
@@ -14,14 +13,6 @@ export async function Footer() {
             Mais que vestir.
             <br />É sobre marcar presença.
           </p>
-          <a
-            href="https://www.instagram.com/kactus_stylish_01/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Instagram size={17} /> @kactus_stylish_01{' '}
-            <ArrowUpRight size={15} />
-          </a>
         </div>
         <div>
           <h3>Explore</h3>
@@ -37,17 +28,13 @@ export async function Footer() {
           <Link href="/politicas/privacidade">Privacidade</Link>
         </div>
         <div>
-          <h3>Fale com a Kactus</h3>
-          <a
-            href="https://www.instagram.com/kactus_stylish_01/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Nos encontre no Instagram ↗
-          </a>
+          <h3>A Kactus</h3>
+          <p className="footer-contact-copy">
+            Moda masculina para quem escolhe se expressar todos os dias.
+          </p>
           {s?.whatsapp && (
             <a href={`https://wa.me/${s.whatsapp.replace(/\D/g, '')}`}>
-              WhatsApp
+              Falar pelo WhatsApp ↗
             </a>
           )}
           {s?.address && <p>{s.address}</p>}
