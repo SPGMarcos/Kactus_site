@@ -28,6 +28,8 @@ Localmente: instale a CLI oficial, autentique, rode `stripe listen --forward-to 
 
 ## Render e GitHub
 
+**Estado desta entrega:** repositório criado e código publicado. Render bloqueado por falta de acesso ao repositório privado; o proprietário escolheu autorizar depois. Abra https://github.com/settings/installations/129523841, mantenha Only select repositories, acrescente Kactus_site e salve. Preserve o acesso SmartControl existente. Depois retome a criação do serviço. Nenhuma URL pública da Kactus foi atribuída nesta entrega.
+
 Repositório privado `SPGMarcos/Kactus_site`, branch main. Serviço Node gratuito, build `npm ci && npm run build`, start `npm start`, health `/api/health`. Node fixado em 24.14.0; servidor em 0.0.0.0 e porta `PORT` (3000 local). Use `render.yaml` como configuração desejada; segredos são preenchidos no Dashboard, nunca valores no YAML. A criação por conector e o Blueprint não devem gerenciar serviços duplicados.
 
 No Dashboard conecte o repositório privado caso a integração GitHub ainda não tenha acesso. Use apenas o subdomínio realmente atribuído pelo Render, sem presumir disponibilidade de `kactus-stylish`. Atualize `NEXT_PUBLIC_SITE_URL`, refaça build e configure os callbacks acima. HTTPS é gerenciado pelo Render; sem Certbot, Nginx ou DNS externo. Verifique `/api/health` via HTTPS e navegação sem aviso de certificado.

@@ -1,38 +1,61 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  Search,
-  UserRound,
-  ShoppingBag,
-  Menu,
-  X,
-} from 'lucide-react';
+import { Search, UserRound, ShoppingBag, Menu, X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useCart } from './cart-provider';
 export function Header() {
   const { items } = useCart();
   const path = usePathname();
+  const active = path === '/' ? '/#inicio' : path;
+  const navigate = (href: string) => {
+    if (path === '/' && href.startsWith('/#')) {
+      const target = document.getElementById(href.split('#')[1]);
+      if (href === '/#inicio')
+        window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)')
+            .matches
+            ? 'instant'
+            : 'smooth',
+        });
+      else target?.scrollIntoView();
+    }
+  };
   return (
     <>
-      <div className="announcement">
-        REFERÊNCIA EM MODA MASCULINA{' '}
-      </div>
+      <div className="announcement">Kactus Stylish <span>Buenópolis e Curvelo · MG</span></div>
       <header className="header">
-        <Link className="brand" href="/" aria-label="Kactus Stylish, início">
+        <Link
+          className="brand"
+          href="/#inicio"
+          onNavigate={() => navigate('/#inicio')}
+          aria-label="Kactus Stylish, início"
+        >
           <img src="/logo.png" alt="" />
-          <span>
-            KACTUS<small>STYLISH</small>
-          </span>
         </Link>
         <nav className="desktop-nav" aria-label="Principal">
-          <Link className={path === '/' ? 'active' : ''} href="/">
-            Início
-          </Link>
-          <Link className={path === '/loja' ? 'active' : ''} href="/loja">
-            Loja
-          </Link>
-          <Link href="/#novidades">Novidades</Link>
+          {[
+            ['/#inicio', 'Início'],
+            ['/loja', 'Loja'],
+            ['/novidades', 'Novidades'],
+          ].map(([href, label]) => (
+            <Link
+              key={href}
+              href={href}
+              onNavigate={() => navigate(href)}
+              className={active === href ? 'active' : ''}
+              aria-current={
+                active === href
+                  ? href !== '/#inicio'
+                    ? 'page'
+                    : 'location'
+                  : undefined
+              }
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
         <div className="header-actions">
           <Link href="/loja#busca" aria-label="Buscar produtos">
@@ -59,9 +82,9 @@ export function Header() {
             <Dialog.Portal>
               <Dialog.Overlay className="dialog-overlay" />
               <Dialog.Content className="menu-content">
-                <Dialog.Title>Explore a Kactus</Dialog.Title>
+                <Dialog.Title>Menu da Kactus</Dialog.Title>
                 <Dialog.Description>
-                  Moda masculina com personalidade.
+                  Acesse a loja, sua conta ou o carrinho.
                 </Dialog.Description>
                 <Dialog.Close
                   className="icon-button close"
@@ -70,14 +93,21 @@ export function Header() {
                   <X />
                 </Dialog.Close>
                 {[
-                  ['/', 'Início'],
+                  ['/#inicio', 'Início'],
                   ['/loja', 'Loja'],
-                  ['/#novidades', 'Novidades'],
+                  ['/novidades', 'Novidades'],
                   ['/conta', 'Minha conta'],
                   ['/carrinho', 'Carrinho'],
                 ].map(([href, label]) => (
                   <Dialog.Close asChild key={href}>
-                    <Link href={href}>{label}</Link>
+                    <Link
+                      href={href}
+                      onNavigate={() => navigate(href)}
+                      className={active === href ? 'active' : ''}
+                      aria-current={active === href ? 'page' : undefined}
+                    >
+                      {label}
+                    </Link>
                   </Dialog.Close>
                 ))}
               </Dialog.Content>

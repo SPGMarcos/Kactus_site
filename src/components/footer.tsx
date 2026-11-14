@@ -1,22 +1,24 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { settings } from '@/lib/catalog';
 export async function Footer() {
   const s = await settings();
   return (
     <footer>
+      <div className="footer-signature" aria-hidden="true">Kactus<i>Stylish</i></div>
       <div className="footer-top">
         <div>
-          <Link href="/" className="footer-brand">
-            KACTUS<span>STYLISH</span>
+
+          <Link href="/" className="footer-brand" aria-label="Kactus Stylish, início">
+            <Image src="/logo.png" width={72} height={72} alt="" />
           </Link>
           <p>
-            Mais que vestir.
-            <br />É sobre marcar presença.
+            Moda masculina em Buenópolis e Curvelo, Minas Gerais.
           </p>
         </div>
         <div>
           <h3>Explore</h3>
-          <Link href="/">Início</Link>
+          <Link href="/#inicio">Início</Link>
           <Link href="/loja">Loja</Link>
           <Link href="/carrinho">Carrinho</Link>
           <Link href="/conta">Minha conta</Link>
@@ -28,17 +30,18 @@ export async function Footer() {
           <Link href="/politicas/privacidade">Privacidade</Link>
         </div>
         <div>
-          <h3>A Kactus</h3>
-          <p className="footer-contact-copy">
-            Moda masculina para quem escolhe se expressar todos os dias.
-          </p>
+          <h3>
+            {s?.whatsapp || s?.address
+              ? 'Fale com a Kactus'
+              : 'Nossas lojas'}
+          </h3>
           {s?.whatsapp && (
             <a href={`https://wa.me/${s.whatsapp.replace(/\D/g, '')}`}>
-              Falar pelo WhatsApp ↗
+              WhatsApp
             </a>
           )}
           {s?.address && <p>{s.address}</p>}
-          <span className="footer-note">Moda masculina. Sua identidade.</span>
+          <Link href="/#essencia">Kactus em Minas Gerais</Link>
         </div>
       </div>
       <div className="footer-bottom">

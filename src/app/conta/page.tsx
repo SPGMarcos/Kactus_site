@@ -19,13 +19,8 @@ export default async function Account({
         </div>
         <div className="account-panel">
           <UserRound size={28} style={{ margin: '0 auto 25px' }} />
-          <p className="eyebrow" style={{ justifyContent: 'center' }}>
-            SEU ESPAÇO NA KACTUS
-          </p>
           <h1>
-            Bem-vindo ao
-            <br />
-            seu próximo estilo.
+            Minha conta
           </h1>
           <p>
             Entre para acompanhar seus pedidos e continuar suas compras. Seu
@@ -36,8 +31,7 @@ export default async function Account({
           </a>
           {params.error && (
             <p role="alert" className="error">
-              Não foi possível entrar. A configuração Google OAuth precisa estar
-              ativa no Supabase.
+              Não conseguimos entrar com sua conta Google. Tente de novo em instantes.
             </p>
           )}
           <small className="muted">
@@ -103,7 +97,7 @@ export default async function Account({
         </div>
       ) : (
         <div className="empty-state">
-          <h3>Sua história com a Kactus começa aqui.</h3>
+          <h3>Você ainda não fez nenhum pedido.</h3>
           <Link className="button" href="/loja">
             Explorar a loja
           </Link>

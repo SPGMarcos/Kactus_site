@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   ),
   title: {
-    default: 'Kactus Stylish | Vista sua essência',
+    default: 'Kactus Stylish | Moda masculina',
     template: '%s | Kactus Stylish',
   },
   description:
-    'Moda masculina com personalidade. Conheça a Kactus Stylish e descubra seu próximo estilo.',
+    'Veja o catálogo de moda masculina da Kactus Stylish e fale com as lojas de Buenópolis e Curvelo.',
   robots: { index: false, follow: false },
 };
 export default function Layout({ children }: { children: React.ReactNode }) {

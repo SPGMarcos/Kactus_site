@@ -46,15 +46,13 @@ export default function Cart() {
       <div className="breadcrumb">
         <Link href="/">Início</Link> / Carrinho
       </div>
-      <p className="eyebrow">SUAS ESCOLHAS, SEU ESTILO</p>
       <h1>Seu carrinho.</h1>
       {!ready ? (
         <p>Carregando carrinho…</p>
       ) : !items.length ? (
         <div className="empty-state">
           <ShoppingBag size={42} />
-          <h2>Seu próximo favorito está esperando.</h2>
-          <p>Explore a coleção e encontre peças com a sua personalidade.</p>
+          <h2>Seu carrinho está vazio.</h2>
           <Link className="button" href="/loja">
             Explorar a loja <ArrowRight size={18} />
           </Link>
@@ -104,11 +102,10 @@ export default function Cart() {
               </strong>
             </div>
             <p>
-              Retirada em loja — configuração de teste. O valor e a
-              disponibilidade serão conferidos no servidor.
+              Nesta compra de teste, a retirada é na loja. Vamos conferir o preço e o estoque antes do pagamento.
             </p>
             <button className="button full" disabled={busy} onClick={checkout}>
-              {busy ? 'Preparando checkout…' : 'Continuar para pagamento'}{' '}
+              {busy ? 'Abrindo pagamento…' : 'Continuar para pagamento'}{' '}
               <ArrowRight size={18} />
             </button>
             <small>

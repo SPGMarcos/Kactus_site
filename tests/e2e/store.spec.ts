@@ -3,12 +3,12 @@ test('vitrine e navegação sem vendas fictícias', async ({ page }) => {
   await page.goto('/');
   await expect(
     page.getByRole('heading', {
-      name: 'Seu estilo. Sua essência. Sua presença.',
+      name: 'O que vestir hoje?',
     }),
   ).toBeVisible();
-  await page.getByRole('link', { name: 'Comprar agora', exact: true }).click();
+  await page.getByRole('link', { name: 'Ver catálogo', exact: true }).click();
   await expect(
-    page.getByRole('heading', { name: 'Seu próximo estilo.' }),
+    page.getByRole('heading', { name: 'Catálogo' }),
   ).toBeVisible();
   await page.getByPlaceholder('O que você procura?').fill('inexistente');
   await page.getByRole('button', { name: 'Filtrar' }).click();
@@ -45,7 +45,7 @@ test('carrinho persiste durante navegação para login', async ({ page }) => {
   await expect(page.getByText('Fixture de teste')).toBeVisible();
   await page.getByRole('button', { name: 'Remover Fixture de teste' }).click();
   await expect(
-    page.getByText('Seu próximo favorito está esperando.'),
+    page.getByText('Seu carrinho está vazio.'),
   ).toBeVisible();
 });
 test('admin sem sessão é bloqueado e URL de retorno não confirma pagamento', async ({

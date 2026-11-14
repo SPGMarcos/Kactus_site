@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, SlidersHorizontal, ArrowRight } from 'lucide-react';
 import { catalog, taxonomies } from '@/lib/catalog';
 import { ProductCard } from '@/components/product-card';
@@ -18,14 +19,18 @@ export default async function Shop({
       <div className="breadcrumb">
         <Link href="/">Início</Link> / Loja
       </div>
-      <div className="section-heading">
+      <div className="section-heading catalog-cover">
         <div>
-          <p className="eyebrow">SELEÇÃO KACTUS STYLISH</p>
-          <h1>Seu próximo estilo.</h1>
-          <p className="muted">Encontre as peças que combinam com você.</p>
+
+          <p className="eyebrow">Catálogo / Kactus Stylish</p>
+          <h1>Catálogo</h1>
+          <p className="muted">Busque pelo nome da peça ou filtre por tamanho e cor.</p>
         </div>
-        <span className="catalog-count">{count} produtos</span>
+        <div className="catalog-cover-photo">
+          <Image src="/look-red-denim.png" alt="Composição com camiseta vermelha e jeans" fill sizes="(max-width: 600px) 100vw, 40vw" />
+        </div>
       </div>
+      <div className="catalog-index"><strong>Índice de peças</strong><span>{count} produtos</span></div>
       <form className="filters" action="/loja">
         <label className="search-field" htmlFor="busca">
           <Search size={18} />
@@ -101,17 +106,20 @@ export default async function Shop({
       ) : (
         <div className="empty-state">
           <span>✳</span>
+
           <h2>
             {error
               ? 'Catálogo temporariamente indisponível'
               : Object.keys(params).length
                 ? 'Nenhuma peça encontrada'
-                : 'Nossa coleção está a caminho.'}
+                : 'Ainda não há peças no catálogo.'}
           </h2>
           <p>
             {error
               ? 'Tente novamente em instantes.'
-              : 'Acompanhe as novidades da Kactus no Instagram ou explore outros filtros.'}
+              : Object.keys(params).length
+                ? 'Tente outro tamanho, cor ou termo de busca.'
+                : 'Enquanto isso, você pode ver os looks no nosso Instagram.'}
           </p>
           <Link
             className="text-link"
