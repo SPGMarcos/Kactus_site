@@ -143,8 +143,8 @@ input[type='checkbox'] {
   gap: 10px;
 }
 .brand img {
-  height: 46px;
-  width: 46px;
+  height: 58px;
+  width: 58px;
   border-radius: 50%;
 }
 .brand > span {
@@ -570,6 +570,8 @@ footer {
   margin-bottom: 16px;
 }
 .footer-brand img {
+  width: 112px;
+  height: 112px;
   border-radius: 50%;
 }
 .footer-top p {
@@ -1922,14 +1924,14 @@ footer {
 .hero-slide .hero-slide-backdrop {
   object-fit: cover;
   object-position: center;
-  filter: blur(18px) brightness(0.52) saturate(0.85);
-  transform: scale(1.08);
+  filter: blur(5px) brightness(0.8) saturate(0.95);
+  transform: scale(1.035);
 }
 .hero-slide .hero-slide-product {
   object-fit: contain;
   object-position: center;
   filter: saturate(0.9) contrast(1.04);
-  transform: scale(1.05);
+  transform: scale(1.015);
 }
 .hero-visual .hero-shade {
   background: linear-gradient(0deg, #151513 0%, transparent 21%);
@@ -2286,7 +2288,8 @@ footer {
 }
 .announcement {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   padding-inline: var(--page-gutter);
   background: var(--ink);
   color: var(--paper);
@@ -2311,7 +2314,7 @@ footer {
 }
 .cover-masthead {
   color: var(--yellow);
-  font-size: clamp(30px, 3vw, 44px);
+  font-size: clamp(38px, 4vw, 58px);
   margin-bottom: 16px;
   letter-spacing: -0.06em;
   line-height: 1.1;
@@ -2333,8 +2336,8 @@ footer {
   letter-spacing: 0.06em;
 }
 .hero-copy h1 {
-  font: 400 clamp(40px, 4.4vw, 72px)/0.99 var(--display);
-  letter-spacing: -0.06em;
+  font: 400 clamp(36px, 3.5vw, 58px)/1.02 var(--display);
+  letter-spacing: -0.055em;
 }
 .hero-copy h1 em {
   color: inherit;
@@ -2410,7 +2413,7 @@ footer {
   color: var(--paper);
 }
 .footer-signature {
-  font-size: clamp(56px, 9vw, 140px);
+  font-size: clamp(48px, 7vw, 112px);
   color: var(--yellow);
   border-bottom: 1px solid #77766e;
   padding-bottom: 0.25em;
@@ -2420,6 +2423,23 @@ footer {
 .footer-note,
 .footer-bottom {
   color: #c9c8bf;
+}
+
+@media (max-width: 700px) {
+  .brand img {
+    width: 46px;
+    height: 46px;
+  }
+  .cover-masthead {
+    font-size: clamp(36px, 10vw, 48px);
+  }
+  .hero-copy h1 {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+  .footer-brand img {
+    width: 96px;
+    height: 96px;
+  }
 }
 
 .catalog-cover {

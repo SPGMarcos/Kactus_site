@@ -10,11 +10,8 @@ export async function Footer() {
         <div>
 
           <Link href="/" className="footer-brand" aria-label="Kactus Stylish, início">
-            <Image src="/logo.png" width={72} height={72} alt="" />
+            <Image src="/logo.png" width={112} height={112} alt="" />
           </Link>
-          <p>
-            Moda masculina. Sua identidade.
-          </p>
         </div>
         <div>
           <h3>Explore</h3>
