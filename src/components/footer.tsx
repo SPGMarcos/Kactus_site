@@ -13,7 +13,7 @@ export async function Footer() {
             <Image src="/logo.png" width={72} height={72} alt="" />
           </Link>
           <p>
-            Moda masculina em Buenópolis e Curvelo, Minas Gerais.
+            Moda masculina. Sua identidade.
           </p>
         </div>
         <div>
@@ -41,7 +41,7 @@ export async function Footer() {
             </a>
           )}
           {s?.address && <p>{s.address}</p>}
-          <Link href="/#essencia">Kactus em Minas Gerais</Link>
+          <Link href="/#essencia">Buenópolis e Curvelo · MG</Link>
         </div>
       </div>
       <div className="footer-bottom">

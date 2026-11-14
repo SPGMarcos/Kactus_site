@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   ),
   title: {
-    default: 'Kactus Stylish | Moda masculina',
+    default: 'Kactus Stylish | Vista sua essência',
     template: '%s | Kactus Stylish',
   },
   description:

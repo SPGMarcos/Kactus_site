@@ -24,7 +24,7 @@ export function Header() {
   };
   return (
     <>
-      <div className="announcement">Kactus Stylish <span>Buenópolis e Curvelo · MG</span></div>
+      <div className="announcement">REFERÊNCIA EM MODA MASCULINA</div>
       <header className="header">
         <Link
           className="brand"

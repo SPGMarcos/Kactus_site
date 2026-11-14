@@ -3,12 +3,12 @@ test('vitrine e navegação sem vendas fictícias', async ({ page }) => {
   await page.goto('/');
   await expect(
     page.getByRole('heading', {
-      name: 'O que vestir hoje?',
+      name: 'Seu estilo. Sua essência. Sua presença.',
     }),
   ).toBeVisible();
-  await page.getByRole('link', { name: 'Ver catálogo', exact: true }).click();
+  await page.getByRole('link', { name: 'Comprar agora', exact: true }).click();
   await expect(
-    page.getByRole('heading', { name: 'Catálogo' }),
+    page.getByRole('heading', { name: 'Seu próximo estilo.' }),
   ).toBeVisible();
   await page.getByPlaceholder('O que você procura?').fill('inexistente');
   await page.getByRole('button', { name: 'Filtrar' }).click();

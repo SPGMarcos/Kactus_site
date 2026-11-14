@@ -30,30 +30,31 @@ test('alterna os looks preenchendo toda a área da vitrine', async ({ page }) =>
   const heroBounds = await page.locator('.hero-visual').boundingBox();
   expect(imageBounds).not.toBeNull();
   expect(heroBounds).not.toBeNull();
-  expect(imageBounds?.x).toBe(heroBounds?.x);
-  expect(imageBounds?.y).toBe(heroBounds?.y);
-  expect(imageBounds?.width).toBe(heroBounds?.width);
-  expect(imageBounds?.height).toBe(heroBounds?.height);
+  // The backdrop is enlarged for the zoom effect, but must cover the hero.
+  expect(imageBounds!.x).toBeLessThanOrEqual(heroBounds!.x);
+  expect(imageBounds!.y).toBeLessThanOrEqual(heroBounds!.y);
+  expect(imageBounds!.x + imageBounds!.width).toBeGreaterThanOrEqual(heroBounds!.x + heroBounds!.width);
+  expect(imageBounds!.y + imageBounds!.height).toBeGreaterThanOrEqual(heroBounds!.y + heroBounds!.height);
   await page.mouse.move(0, 0);
   await expect(activeImage).not.toHaveAttribute('src', /look-white-black/, {
     timeout: 12000,
   });
 
   await page
-    .getByRole('button', { name: 'Imagem 3 de 4: Polo' })
+    .getByRole('button', { name: 'Imagem 3 de 4: POLOS & TEXTURAS' })
     .click();
-  await expect(page.locator('.hero-slide.is-active img')).toHaveAttribute(
+  await expect(activeImage).toHaveAttribute(
     'src',
     /look-polo-navy/,
   );
 
   await page.getByRole('button', { name: 'Imagem anterior' }).click();
-  await expect(page.locator('.hero-slide.is-active img')).toHaveAttribute(
+  await expect(activeImage).toHaveAttribute(
     'src',
     /look-red-denim/,
   );
   await page.getByRole('button', { name: 'Próxima imagem' }).click();
-  await expect(page.locator('.hero-slide.is-active img')).toHaveAttribute(
+  await expect(activeImage).toHaveAttribute(
     'src',
     /look-polo-navy/,
   );

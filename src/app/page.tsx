@@ -10,26 +10,26 @@ export default function Home() {
   const looks = [
     {
       image: '/look-white-black.png',
-      label: 'Preto e branco',
-      title: 'Camiseta branca, calça preta',
+      label: 'CAMISETAS & ESSENCIAIS',
+      title: 'O básico que marca.',
       alt: 'Camiseta branca, calça preta e tênis brancos em composição masculina.',
     },
     {
       image: '/look-red-denim.png',
-      label: 'Jeans',
-      title: 'Camiseta vermelha e bermuda jeans',
+      label: 'COMPOSIÇÕES & ESTILO',
+      title: 'Seu próximo favorito.',
       alt: 'Camiseta vermelha e bermuda jeans em composição masculina.',
     },
     {
       image: '/look-polo-navy.png',
-      label: 'Polo',
-      title: 'Branco com azul-marinho',
+      label: 'POLOS & TEXTURAS',
+      title: 'Presença em cada detalhe.',
       alt: 'Polo branca e calça azul-marinho em composição masculina.',
     },
     {
       image: '/look-balmain-black.png',
-      label: 'Estampa',
-      title: 'Camiseta estampada e bermuda lisa',
+      label: 'ESTILO & IDENTIDADE',
+      title: 'Vista sua melhor versão.',
       alt: 'Camiseta branca estampada e bermuda preta em composição masculina.',
     },
   ];
@@ -44,26 +44,29 @@ export default function Home() {
           </div>
 
           <h1>
-            O que vestir
+            Seu estilo.
             <br />
-            hoje?
+            Sua essência.
+            <br />
+            <em>Sua presença.</em>
           </h1>
           <p>
-            Separamos quatro looks, da camiseta branca com calça preta à polo
-            com azul-marinho.
+            Peças que traduzem quem você é.
+            <br />
+            Do básico indispensável ao detalhe que faz a diferença.
           </p>
           <Link className="button" href="/loja">
-            Ver catálogo <ArrowUpRight size={19} />
+            Comprar agora <ArrowUpRight size={19} />
           </Link>
           <a className="cover-index" href="#caderno">
-            Ver os quatro looks ↓
+            Encontre o seu estilo ↓
           </a>
         </div>
         <div className="hero-visual">
           <HeroSlideshow looks={looks} />
           <div className="hero-shade" />
           <span className="photo-credit">
-            Caderno Kactus · Fotos de inspiração
+            O essencial nunca é comum.
           </span>
         </div>
       </section>
@@ -71,8 +74,8 @@ export default function Home() {
         <section id="caderno" className="section lookbook-edition">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Nesta edição</p>
-              <h2>Quatro combinações</h2>
+              <p className="eyebrow">ENCONTRE O SEU ESTILO</p>
+              <h2>Essenciais, do seu jeito.</h2>
             </div>
             <Link className="text-link" href="/loja">
               Explorar a loja <ArrowRight size={18} />
@@ -98,8 +101,8 @@ export default function Home() {
             ))}
           </div>
           <p className="reference-note">
-            Gostou de uma peça da foto? Consulte o catálogo para ver se ela está
-            disponível.
+            Inspirações da marca. A disponibilidade das peças será informada no
+            catálogo.
           </p>
         </section>
       </Reveal>
@@ -124,13 +127,16 @@ export default function Home() {
           </div>
 
           <div className="story-copy">
-            <p className="eyebrow">Nossas lojas</p>
-            <h2>Buenópolis e Curvelo</h2>
-
-            <p>Nossas duas lojas ficam em Minas Gerais.</p>
+            <p className="eyebrow">MUITO PRAZER, SOMOS A KACTUS.</p>
+            <h2>Estilo não se copia.<br />Se <em>cultiva.</em></h2>
             <p>
-              Quer saber se tem seu tamanho antes de passar na loja? Escolha a
-              unidade e mande uma mensagem.
+              A Kactus Stylish nasceu para quem veste personalidade. Uma seleção
+              de moda masculina que conecta o essencial à sua maneira de estar no
+              mundo.
+            </p>
+            <p>
+              Peças escolhidas com cuidado. Combinações com atitude.
+              <br />E espaço para você ser você.
             </p>
           </div>
         </section>

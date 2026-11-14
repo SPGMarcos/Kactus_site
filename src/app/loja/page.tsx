@@ -23,15 +23,15 @@ export default async function Shop({
       <div className="section-heading catalog-cover">
         <div>
 
-          <p className="eyebrow">Catálogo / Kactus Stylish</p>
-          <h1>Catálogo</h1>
-          <p className="muted">Busque pelo nome da peça ou filtre por tamanho e cor.</p>
+          <p className="eyebrow">SELEÇÃO KACTUS STYLISH</p>
+          <h1>Seu próximo estilo.</h1>
+          <p className="muted">Encontre as peças que combinam com você.</p>
         </div>
         <div className="catalog-cover-photo">
           <Image src="/look-red-denim.png" alt="Composição com camiseta vermelha e jeans" fill sizes="(max-width: 600px) 100vw, 40vw" />
         </div>
       </div>
-      <div className="catalog-index"><strong>Índice de peças</strong><span>{count} produtos</span></div>
+      <div className="catalog-index"><strong>Explore a coleção</strong><span>{count} produtos</span></div>
       <form className="filters" action="/loja">
         <label className="search-field" htmlFor="busca">
           <Search size={18} />
@@ -113,14 +113,14 @@ export default async function Shop({
               ? 'Catálogo temporariamente indisponível'
               : Object.keys(params).length
                 ? 'Nenhuma peça encontrada'
-                : 'Ainda não há peças no catálogo.'}
+                : 'Nossa coleção está a caminho.'}
           </h2>
           <p>
             {error
               ? 'Tente novamente em instantes.'
               : Object.keys(params).length
                 ? 'Tente outro tamanho, cor ou termo de busca.'
-                : 'Enquanto isso, você pode ver os looks no nosso Instagram.'}
+                : 'Acompanhe as novidades da Kactus no Instagram.'}
           </p>
           <Link
             className="text-link"

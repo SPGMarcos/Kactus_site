@@ -35,7 +35,7 @@ test('Instagram único, nova aba e capturas', async ({ page }, testInfo) => {
     'a[href="https://www.instagram.com/kactus_stylish_01/"]',
   );
   await expect(instagram).toHaveCount(1);
-  await expect(instagram).toHaveText('Conheça nosso Instagram');
+  await expect(instagram).toHaveText('Conversar pelo Instagram');
   await expect(instagram).toHaveAttribute('target', '_blank');
   await page.route('https://www.instagram.com/**', (route) =>
     route.fulfill({ body: 'Destino Instagram verificado' }),
