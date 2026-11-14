@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Reveal } from '@/components/reveal';
 import { HomeAnchors } from '@/components/home-anchors';
 import { HeroSlideshow } from '@/components/hero-slideshow';
+import { BrandAsterisk } from '@/components/brand-asterisk';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 export default function Home() {
@@ -106,7 +107,7 @@ export default function Home() {
         <div className="edition-type">
           {Array.from({ length: 4 }, (_, i) => (
             <span key={i}>
-              Kactus Stylish <i>✳</i>
+              Kactus Stylish <i><BrandAsterisk /></i>
             </span>
           ))}
         </div>

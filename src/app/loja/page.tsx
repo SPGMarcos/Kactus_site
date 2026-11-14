@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Search, SlidersHorizontal, ArrowRight } from 'lucide-react';
 import { catalog, taxonomies } from '@/lib/catalog';
 import { ProductCard } from '@/components/product-card';
+import { BrandAsterisk } from '@/components/brand-asterisk';
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Loja' };
 export default async function Shop({
@@ -105,7 +106,7 @@ export default async function Shop({
         </div>
       ) : (
         <div className="empty-state">
-          <span>✳</span>
+          <span><BrandAsterisk /></span>
 
           <h2>
             {error
