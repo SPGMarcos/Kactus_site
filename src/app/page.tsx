@@ -3,10 +3,7 @@ import Image from 'next/image';
 import { Reveal } from '@/components/reveal';
 import { HomeAnchors } from '@/components/home-anchors';
 import { HeroSlideshow } from '@/components/hero-slideshow';
-import {
-  ArrowRight,
-  ArrowUpRight,
-} from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 export default function Home() {
   const looks = [
@@ -41,7 +38,8 @@ export default function Home() {
       <section id="inicio" className="hero">
         <div className="hero-copy">
           <div className="cover-masthead" aria-hidden="true">
-            <span>Kactus</span><i>Stylish</i>
+            <span>Kactus</span>
+            <i>Stylish</i>
           </div>
 
           <h1>
@@ -50,12 +48,15 @@ export default function Home() {
             hoje?
           </h1>
           <p>
-            Separamos quatro looks, da camiseta branca com calça preta à polo com azul-marinho.
+            Separamos quatro looks, da camiseta branca com calça preta à polo
+            com azul-marinho.
           </p>
           <Link className="button" href="/loja">
             Ver catálogo <ArrowUpRight size={19} />
           </Link>
-          <a className="cover-index" href="#caderno">Ver os quatro looks ↓</a>
+          <a className="cover-index" href="#caderno">
+            Ver os quatro looks ↓
+          </a>
         </div>
         <div className="hero-visual">
           <HeroSlideshow looks={looks} />
@@ -69,7 +70,6 @@ export default function Home() {
         <section id="caderno" className="section lookbook-edition">
           <div className="section-heading">
             <div>
-
               <p className="eyebrow">Nesta edição</p>
               <h2>Quatro combinações</h2>
             </div>
@@ -97,14 +97,17 @@ export default function Home() {
             ))}
           </div>
           <p className="reference-note">
-            Gostou de uma peça da foto? Consulte o catálogo para ver se ela está disponível.
+            Gostou de uma peça da foto? Consulte o catálogo para ver se ela está
+            disponível.
           </p>
         </section>
       </Reveal>
       <div className="edition-band" aria-hidden="true">
         <div className="edition-type">
           {Array.from({ length: 4 }, (_, i) => (
-            <span key={i}>Kactus Stylish <i>✳</i></span>
+            <span key={i}>
+              Kactus Stylish <i>✳</i>
+            </span>
           ))}
         </div>
       </div>
@@ -121,17 +124,13 @@ export default function Home() {
 
           <div className="story-copy">
             <p className="eyebrow">Nossas lojas</p>
-            <h2>
-              Buenópolis e Curvelo
-            </h2>
+            <h2>Buenópolis e Curvelo</h2>
 
+            <p>Nossas duas lojas ficam em Minas Gerais.</p>
             <p>
-              Nossas duas lojas ficam em Minas Gerais.
+              Quer saber se tem seu tamanho antes de passar na loja? Escolha a
+              unidade e mande uma mensagem.
             </p>
-            <p>
-              Quer saber se tem seu tamanho antes de passar na loja? Escolha a unidade e mande uma mensagem.
-            </p>
-
           </div>
         </section>
       </Reveal>
@@ -161,10 +160,10 @@ export default function Home() {
                   stroke="none"
                 />
               </svg>
-              <span>@kactus_stylish_01</span>
+              <span>FALE COM A GENTE</span>
             </div>
-            <h2 id="instagram-title">No Instagram da Kactus</h2>
-            <p>Por lá, a gente mostra as peças e como elas ficam juntas.</p>
+            <h2 id="instagram-title">Instagram da loja</h2>
+            <p>Buenópolis · Curvelo</p>
             <div className="instagram-links">
               <a
                 className="button"
@@ -172,7 +171,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Conheça nosso Instagram{' '}
+                Conversar pelo Instagram{' '}
                 <ArrowUpRight size={20} aria-hidden="true" />
               </a>
             </div>
@@ -198,15 +197,14 @@ export default function Home() {
               <span>FALE COM A GENTE</span>
             </div>
             <h2 id="contact-title">WhatsApp das lojas</h2>
-            <p>Escolha com qual loja você quer falar.</p>
+            <p>Buenópolis · Curvelo</p>
             <a
               className="button contact-button"
               href="https://bio.site/kactusstylish01?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAad_gLLTODs23ps4tzb8IEKcIDE-QdEAnEGJuEux4eypU6KsTD4xY8qUTQJptA_aem_xIIEKmLxuXkFiulXz9H3IQ"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Escolher loja{' '}
-              <ArrowUpRight size={20} aria-hidden="true" />
+              Escolher loja <ArrowUpRight size={20} aria-hidden="true" />
             </a>
           </aside>
         </section>

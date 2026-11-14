@@ -2162,11 +2162,23 @@ footer {
 .edition-type {
   display: flex;
   width: max-content;
-  font: 700 clamp(32px, 5vw, 82px)/1 Georgia, serif;
-  letter-spacing: -.055em;
+  font:
+    700 clamp(32px, 5vw, 82px)/1 Georgia,
+    serif;
+  letter-spacing: -0.055em;
 }
-.edition-type span { white-space: nowrap; padding-right: .6em; }
-.edition-type i { display: inline-block; margin-left: .5em; font: normal .6em Arial, sans-serif; vertical-align: middle; }
+.edition-type span {
+  white-space: nowrap;
+  padding-right: 0.6em;
+}
+.edition-type i {
+  display: inline-block;
+  margin-left: 0.5em;
+  font:
+    normal 0.6em Arial,
+    sans-serif;
+  vertical-align: middle;
+}
 
 @media (min-width: 901px) {
   .lookbook-edition {
@@ -2188,32 +2200,60 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
   }
-  .lookbook-edition .look-card:nth-child(even) { margin-top: 16%; }
-  .lookbook-edition .reference-note { grid-column: 2; }
+  .lookbook-edition .look-card:nth-child(even) {
+    margin-top: 16%;
+  }
+  .lookbook-edition .reference-note {
+    grid-column: 2;
+  }
 }
 @media (max-width: 600px) {
-  .lookbook-edition .lookbook-grid { grid-template-columns: 1fr; }
+  .lookbook-edition .lookbook-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @keyframes edition-drift {
-  from { transform: translateX(0); }
-  to { transform: translateX(clamp(-420px, -34vw, -92px)); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(clamp(-420px, -34vw, -92px));
+  }
 }
 @keyframes plate-uncover {
-  from { clip-path: inset(0 0 18% 0); }
-  to { clip-path: inset(0); }
+  from {
+    clip-path: inset(0 0 18% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
 }
 @keyframes plate-pan {
-  from { translate: 0 3%; scale: 1.08; }
-  to { translate: 0 -3%; scale: 1.08; }
+  from {
+    translate: 0 3%;
+    scale: 1.08;
+  }
+  to {
+    translate: 0 -3%;
+    scale: 1.08;
+  }
 }
 @keyframes editorial-rise {
-  from { translate: 0 18px; opacity: .76; }
-  to { translate: 0 0; opacity: 1; }
+  from {
+    translate: 0 18px;
+    opacity: 0.76;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .edition-band { view-timeline-name: --edition; }
+    .edition-band {
+      view-timeline-name: --edition;
+    }
     .edition-type {
       animation: edition-drift linear both;
       animation-timeline: --edition;
@@ -2233,7 +2273,9 @@ footer {
       animation-timeline: view();
       animation-range: entry 0% entry 80%;
     }
-    .lookbook-edition .look-card:focus-visible { animation: none; }
+    .lookbook-edition .look-card:focus-visible {
+      animation: none;
+    }
   }
 }
 
@@ -2242,89 +2284,271 @@ footer {
   --display: Georgia, 'Times New Roman', serif;
   --label: 'Courier New', monospace;
 }
-.announcement { display:flex; justify-content:space-between; padding-inline:var(--page-gutter); background:var(--ink); color:var(--paper); font-family:var(--label); }
-.announcement span { display:inline; color:var(--paper); }
-.header { border-bottom:1px solid var(--ink); background:var(--paper); }
-.cover-masthead, .footer-signature {
-  display:flex;
-  align-items:baseline;
-  gap:.12em;
-  font-family:var(--display);
-  letter-spacing:-.085em;
-  line-height:.88;
+.announcement {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--page-gutter);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--label);
+}
+.announcement span {
+  display: inline;
+  color: var(--paper);
+}
+.header {
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper);
+}
+.cover-masthead,
+.footer-signature {
+  display: flex;
+  align-items: baseline;
+  gap: 0.12em;
+  font-family: var(--display);
+  letter-spacing: -0.085em;
+  line-height: 0.88;
 }
 .cover-masthead {
-  color:var(--yellow);
-  font-size:clamp(30px,3vw,44px);
-  margin-bottom:16px;
-  letter-spacing:-.06em;
-  line-height:1.1;
+  color: var(--yellow);
+  font-size: clamp(30px, 3vw, 44px);
+  margin-bottom: 16px;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
 }
-.cover-masthead i, .footer-signature i { font-size:.64em; font-weight:400; }
+.cover-masthead i,
+.footer-signature i {
+  font-size: 0.64em;
+  font-weight: 400;
+}
 .hero-copy {
-  justify-content:center;
-  background:var(--ink);
-  color:var(--paper);
-  padding:clamp(28px,4vw,64px) var(--page-gutter);
+  justify-content: center;
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(28px, 4vw, 64px) var(--page-gutter);
 }
-.hero-copy .eyebrow { color:var(--yellow); font:500 12px/1.4 var(--label); letter-spacing:.06em; }
-.hero-copy h1 { font:400 clamp(40px,4.4vw,72px)/.99 var(--display); letter-spacing:-.06em; }
-.hero-copy h1 em { color:inherit; font-style:normal; }
-.hero-copy p { max-width:37ch; color:#dddcd4; font-size:15px; line-height:1.55; }
-.cover-index { margin-top:22px; color:var(--paper); font:13px var(--label); text-decoration:underline; text-underline-offset:4px; }
-#caderno { scroll-margin-top:95px; }
-.lookbook-edition h2, .arrivals h2, .story-copy h2, .instagram-copy h2,
-.catalog-cover h1, .cart-page > h1, .detail-copy h1, .policy h1, .account-panel h1 {
-  font-family:var(--display);
-  font-weight:400;
-  letter-spacing:-.055em;
-  line-height:1.02;
+.hero-copy .eyebrow {
+  color: var(--yellow);
+  font: 500 12px/1.4 var(--label);
+  letter-spacing: 0.06em;
 }
-.lookbook-edition h2, .arrivals h2, .story-copy h2, .instagram-copy h2 { font-size:clamp(36px,4.2vw,65px); }
-.lookbook-edition .look-number { padding:3px 8px; font-family:var(--label); }
-.arrivals { padding-block:clamp(40px,7vw,96px); }
-.collection-empty { background:var(--ink); color:var(--paper); }
-.collection-empty .eyebrow, .collection-empty .outline-flower { color:var(--yellow); }
-.collection-empty p { color:#d8d7cd; }
-.brand-story { background:var(--yellow); }
-.story-copy .eyebrow, .story-copy em, .story-copy p { color:var(--ink); }
-.instagram-editorial { padding-block:clamp(46px,6vw,88px); }
-footer { background:var(--ink); color:var(--paper); }
-.footer-signature { font-size:clamp(56px,9vw,140px); color:var(--yellow); border-bottom:1px solid #77766e; padding-bottom:.25em; margin-bottom:32px; }
-.footer-top p, .footer-note, .footer-bottom { color:#c9c8bf; }
+.hero-copy h1 {
+  font: 400 clamp(40px, 4.4vw, 72px)/0.99 var(--display);
+  letter-spacing: -0.06em;
+}
+.hero-copy h1 em {
+  color: inherit;
+  font-style: normal;
+}
+.hero-copy p {
+  max-width: 37ch;
+  color: #dddcd4;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.cover-index {
+  margin-top: 22px;
+  color: var(--paper);
+  font: 13px var(--label);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+#caderno {
+  scroll-margin-top: 95px;
+}
+.lookbook-edition h2,
+.arrivals h2,
+.story-copy h2,
+.instagram-copy h2,
+.catalog-cover h1,
+.cart-page > h1,
+.detail-copy h1,
+.policy h1,
+.account-panel h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+.lookbook-edition h2,
+.arrivals h2,
+.story-copy h2,
+.instagram-copy h2 {
+  font-size: clamp(36px, 4.2vw, 65px);
+}
+.lookbook-edition .look-number {
+  padding: 3px 8px;
+  font-family: var(--label);
+}
+.arrivals {
+  padding-block: clamp(40px, 7vw, 96px);
+}
+.collection-empty {
+  background: var(--ink);
+  color: var(--paper);
+}
+.collection-empty .eyebrow,
+.collection-empty .outline-flower {
+  color: var(--yellow);
+}
+.collection-empty p {
+  color: #d8d7cd;
+}
+.brand-story {
+  background: var(--yellow);
+}
+.story-copy .eyebrow,
+.story-copy em,
+.story-copy p {
+  color: var(--ink);
+}
+.instagram-editorial {
+  padding-block: clamp(46px, 6vw, 88px);
+}
+footer {
+  background: var(--ink);
+  color: var(--paper);
+}
+.footer-signature {
+  font-size: clamp(56px, 9vw, 140px);
+  color: var(--yellow);
+  border-bottom: 1px solid #77766e;
+  padding-bottom: 0.25em;
+  margin-bottom: 32px;
+}
+.footer-top p,
+.footer-note,
+.footer-bottom {
+  color: #c9c8bf;
+}
 
 .catalog-cover {
-  display:grid;
-  grid-template-columns:minmax(0,3fr) minmax(0,2fr);
-  align-items:stretch;
-  gap:0;
-  background:var(--ink);
-  color:var(--paper);
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  align-items: stretch;
+  gap: 0;
+  background: var(--ink);
+  color: var(--paper);
 }
-.catalog-cover > :first-child { align-self:center; padding:clamp(24px,4vw,64px); }
-.catalog-cover .eyebrow { font:12px var(--label); color:var(--yellow); }
-.catalog-cover .muted { color:#dad9d1; }
-.catalog-cover h1, .cart-page > h1, .detail-copy h1, .policy h1 { font-size:clamp(40px,5vw,80px); }
-.catalog-cover-photo { position:relative; min-height:240px; }
-.catalog-cover-photo img { object-fit:cover; object-position:50% 47%; }
-.catalog-index { display:flex; align-items:baseline; justify-content:space-between; padding-block:14px; border-block:1px solid var(--ink); font:13px var(--label); }
-.shop .filters { margin-top:0; border-top:0; }
-.product-caption { border-top:2px solid var(--ink); padding-block:12px; }
-.product-caption h3, .cart-summary h2, .empty-state h2 { font-family:var(--display); }
-.shop .empty-state, .cart-page .empty-state, .account-panel { background:#eeede6; border-top:3px solid var(--ink); }
-.empty-state > svg, .empty-state > span { color:var(--ink); }
-.cart-page > h1, .policy h1 { padding-block:12px 24px; border-bottom:1px solid var(--ink); }
-.cart-summary { border-top:5px solid var(--yellow); }
-.detail-copy { border-top:3px solid var(--ink); padding-top:24px; }
-.detail-price { border-bottom:1px solid var(--line); padding-bottom:14px; }
-@media (max-width:700px) {
-  .hero-copy { padding:24px var(--page-gutter); }
-  .hero-copy h1 { margin-block:14px; }
-  .hero-copy p { margin-bottom:16px; }
-  .cover-index { margin-top:14px; }
-  .catalog-cover { grid-template-columns:1fr; }
-  .catalog-cover-photo { min-height:165px; }
+.catalog-cover > :first-child {
+  align-self: center;
+  padding: clamp(24px, 4vw, 64px);
+}
+.catalog-cover .eyebrow {
+  font: 12px var(--label);
+  color: var(--yellow);
+}
+.catalog-cover .muted {
+  color: #dad9d1;
+}
+.catalog-cover h1,
+.cart-page > h1,
+.detail-copy h1,
+.policy h1 {
+  font-size: clamp(40px, 5vw, 80px);
+}
+.catalog-cover-photo {
+  position: relative;
+  min-height: 240px;
+}
+.catalog-cover-photo img {
+  object-fit: cover;
+  object-position: 50% 47%;
+}
+.catalog-index {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block: 14px;
+  border-block: 1px solid var(--ink);
+  font: 13px var(--label);
+}
+.shop .filters {
+  margin-top: 0;
+  border-top: 0;
+}
+.product-caption {
+  border-top: 2px solid var(--ink);
+  padding-block: 12px;
+}
+.product-caption h3,
+.cart-summary h2,
+.empty-state h2 {
+  font-family: var(--display);
+}
+.shop .empty-state,
+.cart-page .empty-state,
+.account-panel {
+  background: #eeede6;
+  border-top: 3px solid var(--ink);
+}
+.empty-state > svg,
+.empty-state > span {
+  color: var(--ink);
+}
+.cart-page > h1,
+.policy h1 {
+  padding-block: 12px 24px;
+  border-bottom: 1px solid var(--ink);
+}
+.cart-summary {
+  border-top: 5px solid var(--yellow);
+}
+.detail-copy {
+  border-top: 3px solid var(--ink);
+  padding-top: 24px;
+}
+.detail-price {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+@media (max-width: 700px) {
+  .hero-copy {
+    padding: 24px var(--page-gutter);
+  }
+  .hero-copy h1 {
+    margin-block: 14px;
+  }
+  .hero-copy p {
+    margin-bottom: 16px;
+  }
+  .cover-index {
+    margin-top: 14px;
+  }
+  .catalog-cover {
+    grid-template-columns: 1fr;
+  }
+  .catalog-cover-photo {
+    min-height: 165px;
+  }
 }
 
-.header > .brand { justify-self: start; }
-.header > .header-actions { justify-self: end; }
+.header > .brand {
+  justify-self: start;
+}
+.header > .header-actions {
+  justify-self: end;
+}
+
+/* Match the contact information and proportions of the original layout. */
+.instagram-editorial {
+  align-items: stretch;
+}
+.instagram-copy {
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.instagram-kicker {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.instagram-copy h2,
+.contact-panel h2 {
+  font-size: clamp(22px, 2.1vw, 29px);
+  letter-spacing: -0.6px;
+}
+.instagram-links {
+  margin-top: 0;
+  padding-top: 0;
+}
