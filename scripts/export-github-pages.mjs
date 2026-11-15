@@ -50,7 +50,7 @@ try {
     // ordinary document links, without Next's server-dependent hydration.
     html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
     html = html.replace(/<link\b[^>]*rel="(?:preload|modulepreload)"[^>]*>/gi, '');
-    html = html.replace(/((?:href|content)=")\/(?:icon\.png)(\?[^\"]*)?(\")/g, `$1${prefix}/icon.png$3`);
+    html = html.replace(/((?:href|content)=")\/(?:icon\.png)(\?[^\"]*)?(\")/g, `$1${prefix}/icon.png$2$3`);
     html = html.replace(/\b(href|src)="\/(?!\/)/g, `$1="${prefix}/`);
     html = html.replace(/\/_next\/image\?url=%2F([^&" ]+)&amp;w=\d+&amp;q=\d+/g, (_, asset) => `${prefix}/${decodeURIComponent(asset)}`);
     html = html.replaceAll('url(/', `url(${prefix}/`).replaceAll("url('/", `url('${prefix}/`).replaceAll('url("/', `url("${prefix}/`);
