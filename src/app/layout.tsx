@@ -14,8 +14,11 @@ export const metadata: Metadata = {
   description:
     'Veja o catálogo de moda masculina da Kactus Stylish e fale com as lojas de Buenópolis e Curvelo.',
   icons: {
-    icon: [{ url: '/icon.png?v=4', type: 'image/png', sizes: '512x512' }],
-    shortcut: [{ url: '/icon.png?v=4', type: 'image/png', sizes: '512x512' }],
+    icon: [
+      { url: '/favicon.ico?v=5', type: 'image/x-icon', sizes: 'any' },
+      { url: '/icon.png?v=5', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: [{ url: '/favicon.ico?v=5', type: 'image/x-icon', sizes: 'any' }],
     apple: [{ url: '/icon.png?v=4', type: 'image/png', sizes: '512x512' }],
   },
   robots: { index: false, follow: false },

@@ -29,6 +29,7 @@ try {
   await rm(out, { recursive: true, force: true });
   await mkdir(out, { recursive: true });
   await cp('public', out, { recursive: true });
+  await cp('public/favicon.ico', path.join(out, 'favicon.ico'));
   // App Router icons are served by Next, so they are not part of public/.
   await cp('src/app/icon.png', path.join(out, 'icon.png'));
   await cp('.next/static', path.join(out, '_next/static'), { recursive: true });
@@ -50,6 +51,7 @@ try {
     // ordinary document links, without Next's server-dependent hydration.
     html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
     html = html.replace(/<link\b[^>]*rel="(?:preload|modulepreload)"[^>]*>/gi, '');
+    html = html.replace(/((?:href|content)=")\/(?:favicon\.ico)(\?[^"]*)?(\")/g, `$1${prefix}/favicon.ico$2$3`);
     html = html.replace(/((?:href|content)=")\/(?:icon\.png)(\?[^\"]*)?(\")/g, `$1${prefix}/icon.png$2$3`);
     html = html.replace(/\b(href|src)="\/(?!\/)/g, `$1="${prefix}/`);
     html = html.replace(/\/_next\/image\?url=%2F([^&" ]+)&amp;w=\d+&amp;q=\d+/g, (_, asset) => `${prefix}/${decodeURIComponent(asset)}`);
