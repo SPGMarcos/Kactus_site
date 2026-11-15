@@ -10,10 +10,10 @@ export default function Home() {
   const looks = [
     {
       image: '/look-white-black.png',
-      heroImage: '/instagram-reference.png',
+      heroImage: '/look-knit-original.png',
       label: 'CAMISETAS & ESSENCIAIS',
       title: 'O básico que marca.',
-      alt: 'Camiseta branca, calça preta e tênis brancos em composição masculina.',
+      alt: 'Camiseta masculina de tricô claro, como na capa do site original.',
     },
     {
       image: '/look-red-denim.png',
