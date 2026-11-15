@@ -12,7 +12,7 @@ export async function Footer() {
         <div>
 
           <Link href="/" className="footer-brand" aria-label="Kactus Stylish, início">
-            <Image src="/logo.png" width={112} height={112} alt="" />
+            <Image src="/logo.png" width={160} height={160} alt="" />
           </Link>
         </div>
         <div>

@@ -2414,6 +2414,10 @@ footer {
   color: var(--paper);
 }
 .footer-signature {
+  margin-bottom: 0;
+  padding-bottom: 0.16em;
+}
+.footer-signature {
   font-size: clamp(56px, 8vw, 124px);
   color: var(--yellow);
   border-bottom: 1px solid #77766e;
@@ -2449,11 +2453,13 @@ footer .footer-top > div:first-child {
   display: flex;
   align-items: center;
   min-height: 160px;
-  padding-left: clamp(12px, 2vw, 30px);
+  padding-left: clamp(24px, 3vw, 46px);
+  padding-top: 0;
 }
 
 footer .footer-bottom {
-  margin-top: 4px;
+  margin-top: 0;
+  padding-top: 15px;
 }
 
 @media (max-width: 700px) {
