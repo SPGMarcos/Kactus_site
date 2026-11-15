@@ -1924,14 +1924,13 @@ footer {
 .hero-slide .hero-slide-backdrop {
   object-fit: cover;
   object-position: center;
-  filter: blur(5px) brightness(0.8) saturate(0.95);
-  transform: scale(1.035);
+  display: none;
 }
 .hero-slide .hero-slide-product {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  filter: saturate(0.9) contrast(1.04);
-  transform: scale(1.015);
+  filter: saturate(0.96) contrast(1.02);
+  transform: scale(1.01);
 }
 .hero-visual .hero-shade {
   background: linear-gradient(0deg, #151513 0%, transparent 21%);
@@ -2314,7 +2313,7 @@ footer {
 }
 .cover-masthead {
   color: var(--yellow);
-  font-size: clamp(38px, 4vw, 58px);
+  font-size: clamp(48px, 5.2vw, 76px);
   margin-bottom: 16px;
   letter-spacing: -0.06em;
   line-height: 1.1;
@@ -2431,7 +2430,7 @@ footer {
     height: 46px;
   }
   .cover-masthead {
-    font-size: clamp(36px, 10vw, 48px);
+    font-size: clamp(42px, 11vw, 58px);
   }
   .hero-copy h1 {
     font-size: clamp(34px, 9vw, 46px);
