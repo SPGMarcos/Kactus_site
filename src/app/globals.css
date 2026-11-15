@@ -2423,7 +2423,7 @@ footer {
   padding-bottom: 0.16em;
 }
 .footer-signature {
-  font-size: clamp(42px, 5.2vw, 76px);
+  font-size: clamp(58px, 6.4vw, 92px);
   color: var(--yellow);
   border-bottom: 1px solid #77766e;
   padding-bottom: 0.16em;
