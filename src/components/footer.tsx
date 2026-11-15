@@ -5,6 +5,9 @@ export async function Footer() {
   const s = await settings();
   return (
     <footer>
+      <div className="footer-signature" aria-label="Kactus Stylish">
+        Kactus<i>Stylish</i>
+      </div>
       <div className="footer-top">
         <div>
 
