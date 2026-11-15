@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-type Look = { image: string; alt: string; label: string };
+type Look = { image: string; heroImage?: string; alt: string; label: string };
 
 export function HeroSlideshow({ looks }: { looks: Look[] }) {
   const [active, setActive] = useState(0);
@@ -56,13 +56,16 @@ export function HeroSlideshow({ looks }: { looks: Look[] }) {
     >
       <div className="hero-slides">
         {looks.map((look, index) => (
+          (() => {
+            const slideImage = look.heroImage || look.image;
+            return (
           <div
             key={look.image}
             className={`hero-slide${index === active ? ' is-active' : ''}`}
             aria-hidden={index !== active}
           >
             <Image
-              src={look.image}
+              src={slideImage}
               alt=""
               aria-hidden="true"
               className="hero-slide-backdrop"
@@ -72,7 +75,7 @@ export function HeroSlideshow({ looks }: { looks: Look[] }) {
               loading={index === 0 ? undefined : 'eager'}
             />
             <Image
-              src={look.image}
+              src={slideImage}
               alt={look.alt}
               className="hero-slide-product"
               fill
@@ -81,13 +84,15 @@ export function HeroSlideshow({ looks }: { looks: Look[] }) {
               loading={index === 0 ? undefined : 'eager'}
               onLoad={() =>
                 setReady((current) =>
-                  current.includes(look.image)
+                  current.includes(slideImage)
                     ? current
-                    : [...current, look.image],
+                    : [...current, slideImage],
                 )
               }
             />
           </div>
+            );
+          })()
         ))}
         <button
           className="hero-slide-toggle"

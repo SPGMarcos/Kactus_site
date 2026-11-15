@@ -10,6 +10,7 @@ export default function Home() {
   const looks = [
     {
       image: '/look-white-black.png',
+      heroImage: '/instagram-reference.png',
       label: 'CAMISETAS & ESSENCIAIS',
       title: 'O básico que marca.',
       alt: 'Camiseta branca, calça preta e tênis brancos em composição masculina.',
