@@ -2292,12 +2292,6 @@ footer {
   padding-inline: var(--page-gutter);
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--label);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  line-height: 1;
-  text-transform: uppercase;
 }
 .announcement span {
   display: inline;
